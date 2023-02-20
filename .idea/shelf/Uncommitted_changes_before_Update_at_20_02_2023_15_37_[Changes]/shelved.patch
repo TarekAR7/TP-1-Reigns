@@ -1,0 +1,15 @@
+Index: src/main/JaugeARMEE.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package main;\r\n\r\npublic class JaugeARMEE extends Jauge{\r\n    /**\r\n     * Crée une nouvelle jauge avec le nom et la valeur spécifiés.\r\n     *\r\n     * @param nom    Le nom de la jauge\r\n     * @param valeur La valeur de la jauge\r\n     */\r\n    public JaugeARMEE(String nom, int valeur) {\r\n        super(nom, valeur);\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/src/main/JaugeARMEE.java b/src/main/JaugeARMEE.java
+--- a/src/main/JaugeARMEE.java	
++++ b/src/main/JaugeARMEE.java	
+@@ -9,5 +9,6 @@
+      */
+     public JaugeARMEE(String nom, int valeur) {
+         super(nom, valeur);
++        this.nom="Armée";
+     }
+ }
