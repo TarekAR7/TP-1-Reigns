@@ -107,12 +107,7 @@ public class Reigns {
 
         Reigns.personnage = new Personnage(nom,roiReine);
     }
-
-    /**
-     * Cette fonction initialise la banque de questions. Elle crée les questions et les ajoute à la banque.
-     */
-    private static void initBanqueQuestions(){
-        questions = new ArrayList<>();
+    public static Question initq1(){
         Question question1 = new Question(
                 "Main du roi",
                 "Le peuple souhaite libérer les prisonniers",
@@ -121,7 +116,9 @@ public class Reigns {
         question1.ajouteEffetGauche(TypeJauge.ARMEE, -5);
         question1.ajouteEffetGauche(TypeJauge.PEUPLE, +5);
         question1.ajouteEffetDroite(TypeJauge.PEUPLE, -7);
-        questions.add(question1);
+        return question1;
+    }
+    public static Question initq2(){
         Question question2 = new Question(
                 "Paysan",
                 "Il n'y a plus rien à manger",
@@ -130,7 +127,9 @@ public class Reigns {
         question2.ajouteEffetGauche(TypeJauge.FINANCE,-5);
         question2.ajouteEffetGauche(TypeJauge.PEUPLE, +5);
         question2.ajouteEffetDroite(TypeJauge.PEUPLE, -5);
-        questions.add(question2);
+        return question2;
+    }
+    public static Question initq3(){
         Question question3 = new Question(
                 "Prêtre",
                 "Les dieux sont en colère",
@@ -139,7 +138,9 @@ public class Reigns {
         question3.ajouteEffetGauche(TypeJauge.CLERGE, +5);
         question3.ajouteEffetGauche(TypeJauge.PEUPLE, -3);
         question3.ajouteEffetDroite(TypeJauge.CLERGE, -5);
-        questions.add(question3);
+        return question3;
+    }
+    public static Question initq4(){
         Question question4 = new Question(
                 "Main du roi",
                 "Le roi Baratheon rassemble son armée",
@@ -149,7 +150,9 @@ public class Reigns {
         question4.ajouteEffetGauche(TypeJauge.FINANCE, -3);
         question4.ajouteEffetGauche(TypeJauge.CLERGE, -3);
         question4.ajouteEffetDroite(TypeJauge.PEUPLE, +3);
-        questions.add(question4);
+        return question4;
+    }
+    public static Question initq5(){
         Question question5 = new Question(
                 "Paysan",
                 "Abondance de récoltes cette année",
@@ -159,7 +162,23 @@ public class Reigns {
         question5.ajouteEffetGauche(TypeJauge.PEUPLE, -5);
         question5.ajouteEffetDroite(TypeJauge.FINANCE, +1);
         question5.ajouteEffetDroite(TypeJauge.PEUPLE, -3);
-        questions.add(question5);
+        return question5;
+    }
+    /**
+     * Cette fonction initialise la banque de questions. Elle crée les questions et les ajoute à la banque.
+     */
+    private static void initBanqueQuestions(){
+        questions = new ArrayList<>();
+        Question q1 = initq1();
+        questions.add(q1);
+        Question q2 = initq2();
+        questions.add(q2);
+        Question q3 = initq3();
+        questions.add(q3);
+        Question q4 = initq4();
+        questions.add(q4);
+        Question q5 = initq5();
+        questions.add(q5);
     }
 
     /**
