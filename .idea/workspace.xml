@@ -4,21 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e158a1a-5df0-4baf-8107-6e571ac3dc1c" name="Changes" comment="">
+    <list default="true" id="6e158a1a-5df0-4baf-8107-6e571ac3dc1c" name="Changes" comment="tine_comment">
+      <change afterPath="$PROJECT_DIR$/src/main/JaugeARMEE.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/JaugeARMEE.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/JaugeCLERGE.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/JaugeFINANCE.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/JaugePEUPLE.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Jauge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Jauge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Personnage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Personnage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Question.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2L8io0PJqwGmAcIGWR2ZIXD8fBA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -43,6 +53,18 @@
       <option name="presentableId" value="Default" />
       <updated>1675259283620</updated>
     </task>
+    <task id="LOCAL-00001" summary="tine_comment">
+      <created>1676898478829</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1676898478829</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="tine_comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="tine_comment" />
   </component>
 </project>

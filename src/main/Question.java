@@ -233,5 +233,4 @@ public class Question {
     public void setEffetDroite(String effetDroite) {
         this.effetDroite = effetDroite;
     }
-//tine
 }

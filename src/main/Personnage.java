@@ -52,10 +52,10 @@ public class Personnage {
      * Affiche les jauges de Clergé, Peuple, Armée et Finances du personnage.
      */
     public void AfficheJauges() {
-        afficheJauge(jaugeClerge);
-        afficheJauge(jaugePeuple);
-        afficheJauge(jaugeArmee);
-        afficheJauge(jaugeFinance);
+        jaugeClerge.afficheJauge();
+        jaugePeuple.afficheJauge();
+        jaugeArmee.afficheJauge();
+        jaugeFinance.afficheJauge();
         System.out.println();
     }
 
@@ -79,27 +79,6 @@ public class Personnage {
         }
     }
 
-    /**
-     * Affiche une jauge avec un format graphique, en utilisant des "#" pour représenter la valeur de la jauge
-     * et des "_" pour représenter la valeur manquante.
-     *
-     * @param jauge La jauge à afficher
-     */
-    private void afficheJauge(Jauge jauge) {
-        String resultat = "[";
-        // valeur : ####
-        for(int i=0;i<jauge.getValeur();i++){
-            resultat += "#";
-        }
-        // on complète avec ____
-        for(int i=0;i<50-(jauge.getValeur()>0?jauge.getValeur():0);i++){
-            resultat += "_";
-        }
-        resultat += "] ";
-        // affichage du nom
-        resultat += jauge.getNom();
-        System.out.println(resultat);
-    }
 
     /**
      * Retourne le nom du personnage

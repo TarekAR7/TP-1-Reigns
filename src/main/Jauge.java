@@ -32,6 +32,34 @@ public class Jauge {
     }
 
     /**
+     * Affiche une jauge avec un format graphique, en utilisant des "#" pour représenter la valeur de la jauge
+     * et des "_" pour représenter la valeur manquante.
+     */
+    public void afficheJauge() {
+        String resultat = "[";
+        // valeur : ####
+        for(int i=0;i<this.getValeur();i++){
+            resultat += "#";
+        }
+        // on complète avec ____
+        for(int i=0;i<50-(this.getValeur()>0?this.getValeur():0);i++){
+            resultat += "_";
+        }
+        resultat += "] ";
+        // affichage du nom
+        resultat += this.getNom();
+        System.out.println(resultat);
+    }
+    /*public boolean finDuJeu(){
+        if(this.getValeur()<=0
+                || this.getValeur()>=50){
+            return true;
+        }else{
+            return false;
+        }
+    }*/
+
+    /**
      * Retourne le nom de la jauge.
      *
      * @return le nom de la jauge
