@@ -30,11 +30,6 @@ public class Jauge {
         this.nom = nom;
         this.valeur = valeur;
     }
-
-    /**
-     * Affiche une jauge avec un format graphique, en utilisant des "#" pour représenter la valeur de la jauge
-     * et des "_" pour représenter la valeur manquante.
-     */
     public void afficheJauge() {
         String resultat = "[";
         // valeur : ####
@@ -50,15 +45,6 @@ public class Jauge {
         resultat += this.getNom();
         System.out.println(resultat);
     }
-    /*public boolean finDuJeu(){
-        if(this.getValeur()<=0
-                || this.getValeur()>=50){
-            return true;
-        }else{
-            return false;
-        }
-    }*/
-
     /**
      * Retourne le nom de la jauge.
      *
@@ -111,5 +97,11 @@ public class Jauge {
      */
     public void setType(TypeJauge type) {
         this.type = type;
+    }
+    public Boolean verfierJauge(){
+        if(this.getValeur()>=50|| this.getValeur()<=0){
+            return true;
+        }
+        return false;
     }
 }
