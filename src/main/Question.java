@@ -112,31 +112,58 @@ public class Question {
      * @param effets les effets de jauge à appliquer
      * @param personnage le personnage sur lequel les effets doivent être appliqués
      */
-    private void appliqueEffets(Map<TypeJauge,Integer> effets,
-                                Personnage personnage){
+//    private void appliqueEffets(Map<TypeJauge,Integer> effets,
+//                                Personnage personnage){
+//        for(Map.Entry<TypeJauge,Integer> effet : effets.entrySet()){
+//            switch(effet.getKey()){
+//                case ARMEE:
+//                    personnage.getJaugeArmee().setValeur(
+//                            personnage.getJaugeArmee().getValeur()
+//                                    +effet.getValue());
+//                    break;
+//                case CLERGE:
+//                    personnage.getJaugeClerge().setValeur(
+//                            personnage.getJaugeClerge().getValeur()
+//                                    +effet.getValue());
+//                    break;
+//                case FINANCE:
+//                    personnage.getJaugeFinance().setValeur(
+//                            personnage.getJaugeFinance().getValeur()
+//                                    +effet.getValue());
+//                    break;
+//                case PEUPLE:
+//                    personnage.getJaugePeuple().setValeur(
+//                            personnage.getJaugePeuple().getValeur()
+//                                    +effet.getValue());
+//                    break;
+//            }
+//        }
+//    }
+    private void appliqueEffetArmee(Personnage personnage, int valeur,TypeJauge key){
+        if(key.equals(TypeJauge.ARMEE))
+        personnage.getJaugeArmee().setValeur(personnage.getJaugeArmee().getValeur() + valeur);
+    }
+
+    private void appliqueEffetClerge(Personnage personnage, int valeur,TypeJauge key){
+        if(key.equals(TypeJauge.CLERGE))
+        personnage.getJaugeClerge().setValeur(personnage.getJaugeClerge().getValeur() + valeur);
+    }
+
+    private void appliqueEffetFinance(Personnage personnage, int valeur,TypeJauge key){
+        if(key.equals(TypeJauge.FINANCE))
+        personnage.getJaugeFinance().setValeur(personnage.getJaugeFinance().getValeur() + valeur);
+    }
+
+    private void appliqueEffetPeuple(Personnage personnage, int valeur,TypeJauge key){
+        if(key.equals(TypeJauge.PEUPLE))
+        personnage.getJaugePeuple().setValeur(personnage.getJaugePeuple().getValeur() + valeur);
+    }
+    private void appliqueEffets(Map<TypeJauge,Integer> effets, Personnage personnage){
         for(Map.Entry<TypeJauge,Integer> effet : effets.entrySet()){
-            switch(effet.getKey()){
-                case ARMEE:
-                    personnage.getJaugeArmee().setValeur(
-                            personnage.getJaugeArmee().getValeur()
-                                    +effet.getValue());
-                    break;
-                case CLERGE:
-                    personnage.getJaugeClerge().setValeur(
-                            personnage.getJaugeClerge().getValeur()
-                                    +effet.getValue());
-                    break;
-                case FINANCE:
-                    personnage.getJaugeFinance().setValeur(
-                            personnage.getJaugeFinance().getValeur()
-                                    +effet.getValue());
-                    break;
-                case PEUPLE:
-                    personnage.getJaugePeuple().setValeur(
-                            personnage.getJaugePeuple().getValeur()
-                                    +effet.getValue());
-                    break;
-            }
+                appliqueEffetArmee(personnage, effet.getValue(),effet.getKey());
+                appliqueEffetClerge(personnage, effet.getValue(),effet.getKey());
+                appliqueEffetFinance(personnage, effet.getValue(),effet.getKey());
+                appliqueEffetPeuple(personnage, effet.getValue(),effet.getKey());
         }
     }
 
