@@ -64,18 +64,6 @@ public class Personnage {
      *
      * @return true si le jeu est fini, false sinon
      */
-    public boolean finDuJeu(){
-        if(jaugeClerge.verfierJauge()
-                || jaugePeuple.verfierJauge()
-                || jaugeArmee.verfierJauge()
-                || jaugeFinance.verfierJauge()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-
     /**
      * Retourne le nom du personnage
      * @return le nom du personnage

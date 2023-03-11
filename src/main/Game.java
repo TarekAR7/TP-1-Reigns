@@ -27,7 +27,7 @@ public class Game {
 
         // tirage des questions
         int nbTours = 0;
-        while(!personnage.finDuJeu()){
+        while(!this.finDuJeu()){
             nbTours++;
             Question question = getQuestionAleatoire();
             reponseQuestion(question);
