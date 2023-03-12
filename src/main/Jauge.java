@@ -26,7 +26,8 @@ public class Jauge {
      * @param nom Le nom de la jauge
      * @param valeur La valeur de la jauge
      */
-    public Jauge(String nom, int valeur){
+    public Jauge(TypeJauge type,String nom, int valeur){
+        this.type=type;
         this.nom = nom;
         this.valeur = valeur;
     }

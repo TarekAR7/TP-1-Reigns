@@ -33,10 +33,10 @@ public class Personnage {
         this.genre = genre;
         // Initialisation des jauges entre 15 et 35 points
         this.jauges= new Vector<Jauge>();
-        this.jauges.add(new Jauge("Clergé", 15 + (int)(Math.random() * (35 - 15))));
-        this.jauges.add( new Jauge("Peuple", 15 + (int)(Math.random() * (35 - 15))));
-        this.jauges.add(new Jauge("Armée", 15 + (int)(Math.random() * (35 - 15))));
-        this.jauges.add(new Jauge("Finances", 15 + (int)(Math.random() * (35 - 15))));
+        this.jauges.add(new Jauge(TypeJauge.CLERGE,"Clergé", 15 + (int)(Math.random() * (35 - 15))));
+        this.jauges.add( new Jauge(TypeJauge.PEUPLE,"Peuple", 15 + (int)(Math.random() * (35 - 15))));
+        this.jauges.add(new Jauge(TypeJauge.ARMEE,"Armée", 15 + (int)(Math.random() * (35 - 15))));
+        this.jauges.add(new Jauge(TypeJauge.FINANCE,"Finances", 15 + (int)(Math.random() * (35 - 15))));
     }
     /**
      * Affiche les jauges de Clergé, Peuple, Armée et Finances du personnage.
