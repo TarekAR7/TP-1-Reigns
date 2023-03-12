@@ -57,6 +57,7 @@ public class Question {
         this.effetJaugeGauche = new TreeMap<>();
         this.effects = new Vector<Effect>();
     }
+
     /**
      * Affiche la question avec les effets associés aux choix gauche et droit.
      */
