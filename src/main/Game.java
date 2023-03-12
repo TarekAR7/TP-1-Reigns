@@ -14,7 +14,7 @@ public class Game {
         // début du jeu
         System.out.println("Bienvenue sur Reigns");
 
-        initBanqueQuestions();
+        initBanqueQuestions2();
 
         System.out.println("Création du personnage...");
 
@@ -30,7 +30,7 @@ public class Game {
         while(!this.finDuJeu()){
             nbTours++;
             Question question = getQuestionAleatoire();
-            reponseQuestion(question);
+            reponseQuestion2(question);
             personnage.AfficheJauges();
         }
 
@@ -41,8 +41,8 @@ public class Game {
                         +nbTours
                         + " tours");
      }
-    private void reponseQuestion(Question question){
-        question.afficheQuestion();
+    /*private void reponseQuestion(Question question){
+        question.afficheQuestion2();
         // récupère la réponse
         Scanner scanner = new Scanner(System.in);
         String reponse = "";
@@ -58,6 +58,22 @@ public class Game {
             question.appliqueEffetsDroite(this.personnage);
         }
     }
+
+     */
+    private void reponseQuestion2(Question question){
+        question.afficheQuestion2();
+        // récupère la réponse
+        Scanner scanner = new Scanner(System.in);
+        String reponse = "";
+        while(!reponse.equals("G") && !reponse.equals("D")){
+            System.out.println("Entrez la réponse (G ou D)");
+            System.out.flush();
+            reponse = scanner.nextLine();
+        }
+        // applique les malus
+        question.appliquerEffet2(TypeEffect.valueOf(reponse.toString()), this.personnage);
+    }
+
 
     /**
      * Cette fonction permet d'initialiser le personnage joué. Elle demande à l'utilisateur de saisir le nom du personnage
@@ -81,7 +97,7 @@ public class Game {
 
         this.personnage = new Personnage(nom,roiReine);
     }
-    public static Question initq1(){
+    /*public static Question initq1(){
         Question question1 = new Question(
                 "Main du roi",
                 "Le peuple souhaite libérer les prisonniers",
@@ -92,7 +108,20 @@ public class Game {
         question1.ajouteEffetDroite(TypeJauge.PEUPLE, -7);
         return question1;
     }
-    public static Question initq2(){
+
+     */
+    public static Question initq12(){
+        Question question1 = new Question(
+                "Main du roi",
+                "Le peuple souhaite libérer les prisonniersS",
+                "Oui",
+                "Non");
+        question1.ajoutEffets2(TypeEffect.G, TypeJauge.ARMEE, -5);
+        question1.ajoutEffets2(TypeEffect.G, TypeJauge.PEUPLE, 5);
+        question1.ajoutEffets2(TypeEffect.D, TypeJauge.PEUPLE, -7);
+        return question1;
+    }
+    /*public static Question initq2(){
         Question question2 = new Question(
                 "Paysan",
                 "Il n'y a plus rien à manger",
@@ -103,7 +132,9 @@ public class Game {
         question2.ajouteEffetDroite(TypeJauge.PEUPLE, -5);
         return question2;
     }
-    public static Question initq3(){
+
+     */
+    /*public static Question initq3(){
         Question question3 = new Question(
                 "Prêtre",
                 "Les dieux sont en colère",
@@ -114,7 +145,9 @@ public class Game {
         question3.ajouteEffetDroite(TypeJauge.CLERGE, -5);
         return question3;
     }
-    public static Question initq4(){
+
+     */
+    /*public static Question initq4(){
         Question question4 = new Question(
                 "Main du roi",
                 "Le roi Baratheon rassemble son armée",
@@ -125,8 +158,9 @@ public class Game {
         question4.ajouteEffetGauche(TypeJauge.CLERGE, -3);
         question4.ajouteEffetDroite(TypeJauge.PEUPLE, +3);
         return question4;
-    }
-    public static Question initq5(){
+    }*/
+
+    /*public static Question initq5(){
         Question question5 = new Question(
                 "Paysan",
                 "Abondance de récoltes cette année",
@@ -138,10 +172,17 @@ public class Game {
         question5.ajouteEffetDroite(TypeJauge.PEUPLE, -3);
         return question5;
     }
+
+     */
     /**
      * Cette fonction initialise la banque de questions. Elle crée les questions et les ajoute à la banque.
      */
-    private void initBanqueQuestions(){
+    private void initBanqueQuestions2(){
+        this.questions = new ArrayList<>();
+        Question q1 = initq12();
+        this.questions.add(q1);
+    }
+    /*private void initBanqueQuestions(){
         this.questions = new ArrayList<>();
         Question q1 = initq1();
         this.questions.add(q1);
@@ -155,6 +196,8 @@ public class Game {
         this.questions.add(q5);
     }
 
+     */
+
     /**
      * Cette fonction permet de tirer une question aléatoire dans la banque de questions.
      * @return Une question aléatoire
@@ -164,13 +207,11 @@ public class Game {
         return this.questions.get(numQuestion);
     }
     public boolean finDuJeu(){
-        if(this.personnage.jaugeClerge.verfierJauge()
-                || this.personnage.jaugePeuple.verfierJauge()
-                || this.personnage.jaugeArmee.verfierJauge()
-                || this.personnage.jaugeFinance.verfierJauge()){
-            return true;
-        }else{
-            return false;
+        for(Jauge jauge: this.personnage.jauges){
+            if(jauge.verfierJauge())
+                return true;
         }
+        return false;
+
     }
 }
