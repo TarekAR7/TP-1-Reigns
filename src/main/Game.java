@@ -11,36 +11,40 @@ public class Game {
      */
     private ArrayList<Question> questions;
     public Game(){
-        // début du jeu
-        System.out.println("Bienvenue sur Reigns");
 
-        initBanqueQuestions();
-
-        System.out.println("Création du personnage...");
-
-        initPersonnage();
-
-        System.out.println(personnage.getGenre().longRegne()
-                +" "+personnage.getNom());
-
-        personnage.AfficheJauges();
-
-        // tirage des questions
-        int nbTours = 0;
-        while(!this.finDuJeu()){
-            nbTours++;
-            Question question = getQuestionAleatoire();
-            reponseQuestion(question);
-            personnage.AfficheJauges();
-        }
-
-        // fin du jeu
-        System.out.println(
-                personnage.getNom()
-                        + " a perdu ! Son règne a duré "
-                        +nbTours
-                        + " tours");
      }
+     public void run(){
+         // début du jeu
+         System.out.println("Bienvenue sur Reigns");
+
+         initBanqueQuestions();
+
+         System.out.println("Création du personnage...");
+
+         initPersonnage();
+
+         System.out.println(personnage.longRegne()
+                 +" "+personnage.getNom());
+
+         personnage.AfficheJauges();
+
+         // tirage des questions
+         int nbTours = 0;
+         while(!this.finDuJeu()){
+             nbTours++;
+             Question question = getQuestionAleatoire();
+             reponseQuestion(question);
+             personnage.AfficheJauges();
+         }
+
+         // fin du jeu
+         System.out.println(
+                 personnage.getNom()
+                         + " a perdu ! Son règne a duré "
+                         +nbTours
+                         + " tours");
+     }
+
     private void reponseQuestion(Question question){
         question.afficheQuestion();
         // récupère la réponse
@@ -73,10 +77,9 @@ public class Game {
         if(genre==1){
             roiReine = Genre.ROI;
         }else{
-            roiReine = Genre.REINE;
+            this.personnage = new Reine(nom);
         }
 
-        this.personnage = new Personnage(nom,roiReine);
     }
 
     public static Question initq1(){
