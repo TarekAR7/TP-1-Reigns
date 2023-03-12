@@ -75,7 +75,7 @@ public class Game {
         int genre = scanner.nextInt();
         Genre roiReine;
         if(genre==1){
-            roiReine = Genre.ROI;
+            this.personnage = new Roi(nom);
         }else{
             this.personnage = new Reine(nom);
         }

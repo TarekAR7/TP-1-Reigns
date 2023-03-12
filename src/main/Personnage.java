@@ -16,7 +16,6 @@ public class Personnage {
     /**
      * Le genre du personnage
      */
-    protected Genre genre;
     /**
      * La jauge de Clergé
      */
@@ -71,16 +70,10 @@ public class Personnage {
      * Retourne le genre du personnage
      * @return le genre du personnage
      */
-    public Genre getGenre() {
-        return genre;
-    }
     /**
      * Modifie le genre du personnage
      * @param genre Le nouveau genre du personnage
      */
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
     /**
      * Retourne la jauge du clergé
      * @return la jauge du clergé
