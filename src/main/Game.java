@@ -73,7 +73,6 @@ public class Game {
         System.out.println(
                 "Faut-il vous appeler Roi ou Reine ? (1 pour Roi, 2 pour Reine)");
         int genre = scanner.nextInt();
-        Genre roiReine;
         if(genre==1){
             this.personnage = new Roi(nom);
         }else{
