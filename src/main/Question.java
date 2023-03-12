@@ -2,6 +2,7 @@ package main;
 
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.Vector;
 
 /**
  * La classe Question représente une question avec ses effets sur les jauges d'un personnage
@@ -43,6 +44,7 @@ public class Question {
      * @param effetGauche L'effet de la réponse de gauche
      * @param effetDroite L'effet de la réponse de droite
      */
+    protected Vector<Effect> effects;
     public Question(String nomPersonnage,
                     String question,
                     String effetGauche,
@@ -53,6 +55,7 @@ public class Question {
         this.effetDroite = effetDroite;
         this.effetJaugeDroite = new TreeMap<>();
         this.effetJaugeGauche = new TreeMap<>();
+        this.effects = new Vector<Effect>();
     }
 
     /**
@@ -65,8 +68,7 @@ public class Question {
                 + ",D: "+effetDroite
                 + "]";
         System.out.println(result);
-        System.out.println("Effet G:"+afficheEffets(effetJaugeGauche));
-        System.out.println("Effet D:"+afficheEffets(effetJaugeDroite));
+        this.afficheEffets();
         System.out.flush();
     }
 
@@ -76,16 +78,18 @@ public class Question {
      * @param effets La map des effets de jauge
      * @return la chaîne de caractères représentant les effets de la jauge
      */
-    private String afficheEffets(Map<TypeJauge, Integer> effets) {
-        StringBuilder result = new StringBuilder();
-        for (Map.Entry<TypeJauge, Integer> effet : effets.entrySet()) {
-            result.append("; jauge ").append(effet.getKey()).append(":");
-            if (effet.getValue() > 0) {
-                result.append("+");
+    public void afficheEffets(){
+        for(TypeEffect typeEffect : TypeEffect.values()){
+            StringBuilder result = new StringBuilder();
+            result.append("Effet ").append(typeEffect).append(":");
+            for(Effect effet : this.effects){
+                if(effet.typeEffect == typeEffect){
+                    result.append(effet.toString());
+                }
             }
-            result.append(effet.getValue());
+            System.out.println(result);
         }
-        return result.toString();
+
     }
 
     /**
@@ -141,29 +145,29 @@ public class Question {
 //    }
     private void appliqueEffetArmee(Personnage personnage, int valeur,TypeJauge key){
         if(key.equals(TypeJauge.ARMEE))
-        personnage.getJaugeArmee().setValeur(personnage.getJaugeArmee().getValeur() + valeur);
+            personnage.getJaugeArmee().setValeur(personnage.getJaugeArmee().getValeur() + valeur);
     }
 
     private void appliqueEffetClerge(Personnage personnage, int valeur,TypeJauge key){
         if(key.equals(TypeJauge.CLERGE))
-        personnage.getJaugeClerge().setValeur(personnage.getJaugeClerge().getValeur() + valeur);
+            personnage.getJaugeClerge().setValeur(personnage.getJaugeClerge().getValeur() + valeur);
     }
 
     private void appliqueEffetFinance(Personnage personnage, int valeur,TypeJauge key){
         if(key.equals(TypeJauge.FINANCE))
-        personnage.getJaugeFinance().setValeur(personnage.getJaugeFinance().getValeur() + valeur);
+            personnage.getJaugeFinance().setValeur(personnage.getJaugeFinance().getValeur() + valeur);
     }
 
     private void appliqueEffetPeuple(Personnage personnage, int valeur,TypeJauge key){
         if(key.equals(TypeJauge.PEUPLE))
-        personnage.getJaugePeuple().setValeur(personnage.getJaugePeuple().getValeur() + valeur);
+            personnage.getJaugePeuple().setValeur(personnage.getJaugePeuple().getValeur() + valeur);
     }
     private void appliqueEffets(Map<TypeJauge,Integer> effets, Personnage personnage){
         for(Map.Entry<TypeJauge,Integer> effet : effets.entrySet()){
-                appliqueEffetArmee(personnage, effet.getValue(),effet.getKey());
-                appliqueEffetClerge(personnage, effet.getValue(),effet.getKey());
-                appliqueEffetFinance(personnage, effet.getValue(),effet.getKey());
-                appliqueEffetPeuple(personnage, effet.getValue(),effet.getKey());
+            appliqueEffetArmee(personnage, effet.getValue(),effet.getKey());
+            appliqueEffetClerge(personnage, effet.getValue(),effet.getKey());
+            appliqueEffetFinance(personnage, effet.getValue(),effet.getKey());
+            appliqueEffetPeuple(personnage, effet.getValue(),effet.getKey());
         }
     }
 
