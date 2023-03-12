@@ -14,4 +14,5 @@ public class Roi extends Personnage {
     public String longRegne(){
         return "Long règne au roi";
     }
+
 }
