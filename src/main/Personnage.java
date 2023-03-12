@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Vector;
+
 /**
  * Représente un personnage ayant un nom, un genre, et des jauges de Clergé, Peuple, Armée et Finances.
  *
@@ -18,20 +20,7 @@ public class Personnage {
     /**
      * La jauge de Clergé
      */
-    protected Jauge jaugeClerge;
-    /**
-     * La jauge de Peuple
-     */
-    protected Jauge jaugePeuple;
-    /**
-     * La jauge d'Armée
-     */
-    protected Jauge jaugeArmee;
-    /**
-     * La jauge de Finances
-     */
-    protected Jauge jaugeFinance;
-
+    protected Vector<Jauge>  jauges;
     /**
      * Crée un nouveau personnage avec le nom et le genre spécifiés,
      * puis initialise les jauges de Clergé, Peuple, Armée et Finances.
@@ -43,19 +32,20 @@ public class Personnage {
         this.nom = nom;
         this.genre = genre;
         // Initialisation des jauges entre 15 et 35 points
-        jaugeClerge = new Jauge("Clergé", 15 + (int)(Math.random() * (35 - 15)));
-        jaugePeuple = new Jauge("Peuple", 15 + (int)(Math.random() * (35 - 15)));
-        jaugeArmee = new Jauge("Armée", 15 + (int)(Math.random() * (35 - 15)));
-        jaugeFinance = new Jauge("Finances", 15 + (int)(Math.random() * (35 - 15)));
+        this.jauges= new Vector<Jauge>();
+        this.jauges.add(new Jauge("Clergé", 15 + (int)(Math.random() * (35 - 15))));
+        this.jauges.add( new Jauge("Peuple", 15 + (int)(Math.random() * (35 - 15))));
+        this.jauges.add(new Jauge("Armée", 15 + (int)(Math.random() * (35 - 15))));
+        this.jauges.add(new Jauge("Finances", 15 + (int)(Math.random() * (35 - 15))));
     }
     /**
      * Affiche les jauges de Clergé, Peuple, Armée et Finances du personnage.
      */
     public void AfficheJauges() {
-        jaugeClerge.afficheJauge();
-        jaugePeuple.afficheJauge();
-        jaugeArmee.afficheJauge();
-        jaugeFinance.afficheJauge();
+
+        for (Jauge jauge : jauges){
+            jauge.afficheJauge();
+        }
         System.out.println();
     }
 
@@ -96,61 +86,6 @@ public class Personnage {
      * Retourne la jauge du clergé
      * @return la jauge du clergé
      */
-    public Jauge getJaugeClerge() {
-        return jaugeClerge;
-    }
 
-    /**
-     * Modifie la jauge du clergé
-     * @param jaugeClerge La nouvelle jauge du clergé
-     */
-    public void setJaugeClerge(Jauge jaugeClerge) {
-        this.jaugeClerge = jaugeClerge;
-    }
-
-    /**
-     * Retourne la jauge du peuple
-     * @return la jauge du peuple
-     */
-    public Jauge getJaugePeuple() {
-        return jaugePeuple;
-    }
-    /**
-     * Modifie la jauge du peuple
-     * @param jaugePeuple La nouvelle jauge du peuple
-     */
-    public void setJaugePeuple(Jauge jaugePeuple) {
-        this.jaugePeuple = jaugePeuple;
-    }
-
-    /**
-     * Retourne la jauge de l'armée
-     * @return la jauge de l'armée
-     */
-    public Jauge getJaugeArmee() {
-        return jaugeArmee;
-    }
-    /**
-     * Modifie la jauge de l'armée
-     * @param jaugeArmee La nouvelle jauge de l'armée
-     */
-    public void setJaugeArmee(Jauge jaugeArmee) {
-        this.jaugeArmee = jaugeArmee;
-    }
-
-    /**
-     * Retourne la jauge des finances
-     * @return la jauge des finances
-     */
-    public Jauge getJaugeFinance() {
-        return jaugeFinance;
-    }
-    /**
-     * Modifie la jauge des finances
-     * @param jaugeFinance La nouvelle jauge des finances
-     */
-    public void setJaugeFinance(Jauge jaugeFinance) {
-        this.jaugeFinance = jaugeFinance;
-    }
 
 }
