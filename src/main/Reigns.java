@@ -30,6 +30,7 @@ public class Reigns {
      */
     public static void main(String[] args){
         game= new Game();
+        game.run();
     }
 
     /**
