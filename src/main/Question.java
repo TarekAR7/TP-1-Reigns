@@ -91,24 +91,27 @@ public class Question {
         }
 
     }
-
+    public void appliquerEffet(TypeEffect typeEffect, Personnage personnage){
+        for(Effect effet : this.effects){
+            if(effet.typeEffect == typeEffect){
+                effet.appilquer(personnage);
+            }
+        }
+    }
+    public void ajoutEffets(TypeEffect typeEffect, TypeJauge nomJauge, int valeur){
+        effects.add(new Effect(typeEffect, nomJauge, valeur));
+    }
     /**
      * Applique les effets associés au choix gauche sur un personnage donné.
      *
      * @param personnage le personnage sur lequel les effets doivent être appliqués
      */
-    public void appliqueEffetsGauche(Personnage personnage){
-        this.appliqueEffets(effetJaugeGauche, personnage);
-    }
 
     /**
      * Applique les effets associés au choix droit sur un personnage donné.
      *
      * @param personnage le personnage sur lequel les effets doivent être appliqués
      */
-    public void appliqueEffetsDroite(Personnage personnage){
-        this.appliqueEffets(effetJaugeDroite, personnage);
-    }
 
     /**
      * Applique les effets d'une jauge sur un personnage donné.
@@ -143,33 +146,6 @@ public class Question {
 //            }
 //        }
 //    }
-    private void appliqueEffetArmee(Personnage personnage, int valeur,TypeJauge key){
-        if(key.equals(TypeJauge.ARMEE))
-            personnage.getJaugeArmee().setValeur(personnage.getJaugeArmee().getValeur() + valeur);
-    }
-
-    private void appliqueEffetClerge(Personnage personnage, int valeur,TypeJauge key){
-        if(key.equals(TypeJauge.CLERGE))
-            personnage.getJaugeClerge().setValeur(personnage.getJaugeClerge().getValeur() + valeur);
-    }
-
-    private void appliqueEffetFinance(Personnage personnage, int valeur,TypeJauge key){
-        if(key.equals(TypeJauge.FINANCE))
-            personnage.getJaugeFinance().setValeur(personnage.getJaugeFinance().getValeur() + valeur);
-    }
-
-    private void appliqueEffetPeuple(Personnage personnage, int valeur,TypeJauge key){
-        if(key.equals(TypeJauge.PEUPLE))
-            personnage.getJaugePeuple().setValeur(personnage.getJaugePeuple().getValeur() + valeur);
-    }
-    private void appliqueEffets(Map<TypeJauge,Integer> effets, Personnage personnage){
-        for(Map.Entry<TypeJauge,Integer> effet : effets.entrySet()){
-            appliqueEffetArmee(personnage, effet.getValue(),effet.getKey());
-            appliqueEffetClerge(personnage, effet.getValue(),effet.getKey());
-            appliqueEffetFinance(personnage, effet.getValue(),effet.getKey());
-            appliqueEffetPeuple(personnage, effet.getValue(),effet.getKey());
-        }
-    }
 
     /**
      * Ajoute un effet à la jauge associée au choix gauche.

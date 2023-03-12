@@ -14,7 +14,7 @@ public class Game {
         // début du jeu
         System.out.println("Bienvenue sur Reigns");
 
-        initBanqueQuestions2();
+        initBanqueQuestions();
 
         System.out.println("Création du personnage...");
 
@@ -30,7 +30,7 @@ public class Game {
         while(!this.finDuJeu()){
             nbTours++;
             Question question = getQuestionAleatoire();
-            reponseQuestion2(question);
+            reponseQuestion(question);
             personnage.AfficheJauges();
         }
 
@@ -60,8 +60,8 @@ public class Game {
     }
 
      */
-    private void reponseQuestion2(Question question){
-        question.afficheQuestion2();
+    private void reponseQuestion(Question question){
+        question.afficheQuestion();
         // récupère la réponse
         Scanner scanner = new Scanner(System.in);
         String reponse = "";
@@ -71,7 +71,7 @@ public class Game {
             reponse = scanner.nextLine();
         }
         // applique les malus
-        question.appliquerEffet2(TypeEffect.valueOf(reponse.toString()), this.personnage);
+        question.appliquerEffet(TypeEffect.valueOf(reponse), this.personnage);
     }
 
 
@@ -97,28 +97,16 @@ public class Game {
 
         this.personnage = new Personnage(nom,roiReine);
     }
-    /*public static Question initq1(){
-        Question question1 = new Question(
-                "Main du roi",
-                "Le peuple souhaite libérer les prisonniers",
-                "Oui",
-                "Non");
-        question1.ajouteEffetGauche(TypeJauge.ARMEE, -5);
-        question1.ajouteEffetGauche(TypeJauge.PEUPLE, +5);
-        question1.ajouteEffetDroite(TypeJauge.PEUPLE, -7);
-        return question1;
-    }
 
-     */
-    public static Question initq12(){
+    public static Question initq1(){
         Question question1 = new Question(
                 "Main du roi",
                 "Le peuple souhaite libérer les prisonniersS",
                 "Oui",
                 "Non");
-        question1.ajoutEffets2(TypeEffect.G, TypeJauge.ARMEE, -5);
-        question1.ajoutEffets2(TypeEffect.G, TypeJauge.PEUPLE, 5);
-        question1.ajoutEffets2(TypeEffect.D, TypeJauge.PEUPLE, -7);
+        question1.ajoutEffets(TypeEffect.G, TypeJauge.ARMEE, -5);
+        question1.ajoutEffets(TypeEffect.G, TypeJauge.PEUPLE, 5);
+        question1.ajoutEffets(TypeEffect.D, TypeJauge.PEUPLE, -7);
         return question1;
     }
     /*public static Question initq2(){
@@ -177,9 +165,9 @@ public class Game {
     /**
      * Cette fonction initialise la banque de questions. Elle crée les questions et les ajoute à la banque.
      */
-    private void initBanqueQuestions2(){
+    private void initBanqueQuestions(){
         this.questions = new ArrayList<>();
-        Question q1 = initq12();
+        Question q1 = initq1();
         this.questions.add(q1);
     }
     /*private void initBanqueQuestions(){
