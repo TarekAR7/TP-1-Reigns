@@ -41,25 +41,6 @@ public class Game {
                         +nbTours
                         + " tours");
      }
-    /*private void reponseQuestion(Question question){
-        question.afficheQuestion2();
-        // récupère la réponse
-        Scanner scanner = new Scanner(System.in);
-        String reponse = "";
-        while(!reponse.equals("G") && !reponse.equals("D")){
-            System.out.println("Entrez la réponse (G ou D)");
-            System.out.flush();
-            reponse = scanner.nextLine();
-        }
-        // applique les malus
-        if(reponse.equals("G")){
-            question.appliqueEffetsGauche(this.personnage);
-        }else{
-            question.appliqueEffetsDroite(this.personnage);
-        }
-    }
-
-     */
     private void reponseQuestion(Question question){
         question.afficheQuestion();
         // récupère la réponse
@@ -109,68 +90,58 @@ public class Game {
         question1.ajoutEffets(TypeEffect.D, TypeJauge.PEUPLE, -7);
         return question1;
     }
-    /*public static Question initq2(){
+    public static Question initq2(){
         Question question2 = new Question(
                 "Paysan",
                 "Il n'y a plus rien à manger",
                 "Importer de la nourriture",
                 "Ne rien faire");
-        question2.ajouteEffetGauche(TypeJauge.FINANCE,-5);
-        question2.ajouteEffetGauche(TypeJauge.PEUPLE, +5);
-        question2.ajouteEffetDroite(TypeJauge.PEUPLE, -5);
+        question2.ajoutEffets(TypeEffect.G,TypeJauge.FINANCE,-5);
+        question2.ajoutEffets(TypeEffect.G,TypeJauge.PEUPLE, +5);
+        question2.ajoutEffets(TypeEffect.D,TypeJauge.PEUPLE, -5);
         return question2;
     }
 
-     */
-    /*public static Question initq3(){
+    public static Question initq3(){
         Question question3 = new Question(
                 "Prêtre",
                 "Les dieux sont en colère",
                 "Faire un sacrifice",
                 "Ne rien faire");
-        question3.ajouteEffetGauche(TypeJauge.CLERGE, +5);
-        question3.ajouteEffetGauche(TypeJauge.PEUPLE, -3);
-        question3.ajouteEffetDroite(TypeJauge.CLERGE, -5);
+        question3.ajoutEffets(TypeEffect.G,TypeJauge.CLERGE, +5);
+        question3.ajoutEffets(TypeEffect.G,TypeJauge.PEUPLE, -3);
+        question3.ajoutEffets(TypeEffect.D,TypeJauge.CLERGE, -5);
         return question3;
     }
 
-     */
-    /*public static Question initq4(){
+    public static Question initq4(){
         Question question4 = new Question(
                 "Main du roi",
                 "Le roi Baratheon rassemble son armée",
                 "Le soutenir",
                 "Rester neutre");
-        question4.ajouteEffetGauche(TypeJauge.ARMEE, +3);
-        question4.ajouteEffetGauche(TypeJauge.FINANCE, -3);
-        question4.ajouteEffetGauche(TypeJauge.CLERGE, -3);
-        question4.ajouteEffetDroite(TypeJauge.PEUPLE, +3);
+        question4.ajoutEffets(TypeEffect.G,TypeJauge.ARMEE, +3);
+        question4.ajoutEffets(TypeEffect.G,TypeJauge.FINANCE, -3);
+        question4.ajoutEffets(TypeEffect.G,TypeJauge.CLERGE, -3);
+        question4.ajoutEffets(TypeEffect.D,TypeJauge.PEUPLE, +3);
         return question4;
-    }*/
-
-    /*public static Question initq5(){
+    }
+    public static Question initq5(){
         Question question5 = new Question(
                 "Paysan",
                 "Abondance de récoltes cette année",
                 "Taxer énormément",
                 "Taxer un tout petit peu");
-        question5.ajouteEffetGauche(TypeJauge.FINANCE, +10);
-        question5.ajouteEffetGauche(TypeJauge.PEUPLE, -5);
-        question5.ajouteEffetDroite(TypeJauge.FINANCE, +1);
-        question5.ajouteEffetDroite(TypeJauge.PEUPLE, -3);
+        question5.ajoutEffets(TypeEffect.G,TypeJauge.FINANCE, +10);
+        question5.ajoutEffets(TypeEffect.G,TypeJauge.PEUPLE, -5);
+        question5.ajoutEffets(TypeEffect.D,TypeJauge.FINANCE, +1);
+        question5.ajoutEffets(TypeEffect.D,TypeJauge.PEUPLE, -3);
         return question5;
     }
-
-     */
     /**
      * Cette fonction initialise la banque de questions. Elle crée les questions et les ajoute à la banque.
      */
     private void initBanqueQuestions(){
-        this.questions = new ArrayList<>();
-        Question q1 = initq1();
-        this.questions.add(q1);
-    }
-    /*private void initBanqueQuestions(){
         this.questions = new ArrayList<>();
         Question q1 = initq1();
         this.questions.add(q1);
@@ -183,8 +154,6 @@ public class Game {
         Question q5 = initq5();
         this.questions.add(q5);
     }
-
-     */
 
     /**
      * Cette fonction permet de tirer une question aléatoire dans la banque de questions.

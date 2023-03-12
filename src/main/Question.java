@@ -1,7 +1,6 @@
 package main;
 
-import java.util.Map;
-import java.util.TreeMap;
+
 import java.util.Vector;
 
 /**
@@ -30,11 +29,6 @@ public class Question {
     /**
      * les effets sur les jauges pour la réponse de gauche
      */
-    protected Map<TypeJauge, Integer> effetJaugeGauche;
-    /**
-     * les effets sur les jauges pour la réponse de droite
-     */
-    protected Map<TypeJauge, Integer> effetJaugeDroite;
 
     /**
      * Construit une nouvelle question avec les informations données
@@ -53,8 +47,6 @@ public class Question {
         this.question = question;
         this.effetGauche = effetGauche;
         this.effetDroite = effetDroite;
-        this.effetJaugeDroite = new TreeMap<>();
-        this.effetJaugeGauche = new TreeMap<>();
         this.effects = new Vector<Effect>();
     }
 
@@ -72,12 +64,6 @@ public class Question {
         System.out.flush();
     }
 
-    /**
-     * Retourne une chaîne de caractères représentant les effets d'une jauge.
-     *
-     * @param effets La map des effets de jauge
-     * @return la chaîne de caractères représentant les effets de la jauge
-     */
     public void afficheEffets(){
         for(TypeEffect typeEffect : TypeEffect.values()){
             StringBuilder result = new StringBuilder();
@@ -146,28 +132,6 @@ public class Question {
 //            }
 //        }
 //    }
-
-    /**
-     * Ajoute un effet à la jauge associée au choix gauche.
-     *
-     * @param jauge la jauge à laquelle l'effet doit être ajouté
-     * @param valeur la valeur de l'effet à ajouter
-     */
-    public void ajouteEffetGauche(TypeJauge jauge,
-                                  int valeur){
-        effetJaugeGauche.put(jauge,valeur);
-    }
-
-    /**
-     * Ajoute un effet à la jauge associée au choix droit.
-     *
-     * @param jauge la jauge à laquelle l'effet doit être ajouté
-     * @param valeur la valeur de l'effet à ajouter
-     */
-    public void ajouteEffetDroite(TypeJauge jauge,
-                                  int valeur){
-        effetJaugeDroite.put(jauge,valeur);
-    }
 
     /**
      * Retourne le nom du personnage associé à la question.
